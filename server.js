@@ -32,13 +32,14 @@ app.post('/api/notes', (req, res) => {
 });
 
 app.get("/api/notes/:id", function(req,res) {
-    res.json(notes[req.params.id]);
+    res.json(res.json(JSON.parse(fs.readFileSync(db, "utf8")))[req.params.id]);
 });
 
 app.delete("/api/notes/:id", function(req, res) {
+    let notes = JSON.parse(fs.readFileSync(db, 'utf8'));
     notes.splice(req.params.id, 1);
-    updateDb();
-    console.log("Deleted note with id "+req.params.id);
+    fs.writeFileSync(db, JSON.stringify(notes, null, 2));
+    res.json(notes);
 });
 
 // Listen
