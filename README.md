@@ -24,7 +24,7 @@
 
   ## Application
   
-  ![Gif](./assets/Note_Taker.gif)
+  ![Gif](Assets\Note_Taker.gif)
 
 
 
